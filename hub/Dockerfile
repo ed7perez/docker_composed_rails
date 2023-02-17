@@ -8,8 +8,8 @@ FROM ruby:$RUBY_VERSION-slim as base
 WORKDIR /rails
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_WITHOUT="development"
+#ENV RAILS_ENV="production" \
+#    BUNDLE_WITHOUT="development"
 
 
 # Throw-away build stage to reduce size of final image
@@ -28,8 +28,9 @@ RUN curl https://get.volta.sh | bash && \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    bundle exec bootsnap precompile --gemfile
+RUN gem install railties && \
+        bundle install && \
+        bundle exec bootsnap precompile --gemfile
 
 
 # Install node modules
