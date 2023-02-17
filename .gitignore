@@ -1,0 +1,6 @@
+hub/config/master.key
+node_modules
+docker-compose.yml
+.gitmodules
+.DS_Store
+.idea/**/*
